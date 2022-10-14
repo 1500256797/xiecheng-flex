@@ -469,8 +469,8 @@ nav {
     /* 再次重写下视口 防止覆盖 */
     min-width: 320px;
     max-width: 540px;
-    /* 设置z-index:9999 保持搜索框置顶 */
-    /* z-index: 9999; */
+    /* 设置z-index:9999 保持底部导航栏置顶 */
+    z-index: 9999;
 }
 
 .bottom a {
@@ -519,6 +519,7 @@ footer {
 
     padding-top: 20px;
     padding-bottom: 60px;
+    
 /* flex-wrap: wrap; */
 }
 footer p .iconfont {
