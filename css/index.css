@@ -1,0 +1,492 @@
+/* 为body设置常用移动端样式  */
+
+body {
+    max-width: 540px;
+    /* 宽度一般默认是320 */
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    /* 设置不显示横轴滚动条 */
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    /* 去掉下划线 */
+    text-decoration: none;
+    color: #222;
+}
+
+div {
+/* css3 盒子模型 再也不用加减运算了 */
+box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 搜索模块 使用固定定位 固定不动 */
+.search-index {
+    display: flex;
+    /* 固定定位和父级没有关系，是以屏幕视口为准的 */
+    position: fixed;
+    top: 0;
+    /*  */
+    left: 50%;
+    /* 为了兼容老版本的谷歌浏览器 */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    /* margin-left: -xxx 不行，因为宽度不确定，只能进行计算。
+    同时，因为是是固定定位，无法使用margin 0 auto */
+    /* 固定的盒子必须要有宽度*/
+    width: 100%;
+    /* 再次重写下视口 防止覆盖 */
+    min-width: 320px;
+    max-width: 540px;
+    height: 48px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    /* 设置z-index:9999 保持搜索框置顶 */
+    z-index: 9999;
+
+}
+/* 左侧是固定大小的，右侧搜索框是自动的  */
+.search {
+    flex: 1;
+
+    height: 28px;
+    border: 1px solid #ccc;
+    margin: 8px  10px ;
+
+    /* 小圆角 */
+    border-radius: 12px;
+    box-shadow: 0 2px 4px  rgba(0,0,0,.2);
+
+    /* 设置文字 */
+    color: #999;
+    /* 这里是26而不是28，因为用的是border-size，所以要减去上下边框 */
+    line-height: 26px;
+    padding-left: 28px;
+    font-size: 12px;
+    /* 子觉父相 */
+    position: relative;
+}
+/* 搜索框的放大镜 */
+.search::before{
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 20px;
+    height: 20px;
+    background: url(../images/sprite.png) no-repeat -59px -279px;
+    background-size: 104px auto;
+}
+
+
+.user::before{
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(../images/tabbar.png) no-repeat 0 -96px;
+    /* 图片缩放 宽度32px  高度auto */
+    background-size: 32px  auto;
+    /* 居中 */
+    margin: 0 auto -2px ;
+}
+
+
+
+.user {
+    width: 48px;
+    height: 48px;
+    /* background-color: rgb(129, 168, 78); */
+    font-size: 5px;
+    text-align: center;
+
+    color: #666;
+
+
+}
+
+
+.focus {
+    /* background-color: pink; */
+    /* 上面的焦点图是固定定位 是脱标的，所以这个div会上去。 */
+    padding-top: 44px;
+}
+
+/* banner */
+.focus img {
+    width: 100%;
+
+}
+
+/* 局部导航栏 */
+.local-nav {
+    display: flex;
+    justify-content: flex-start;
+    height: 64px;
+    background-color: #fff;
+
+    margin : 0px 2px 4px;
+    padding: 0;
+    border-radius: 8px;
+}
+
+.local-nav li {
+    flex: 1;
+
+}
+
+/* 让图标和文字上下排列 并居中 */
+.local-nav a {
+    display: flex;
+    flex-direction: column;
+    /*侧轴居中*/
+    align-items: center;
+    font-size: 12px;
+
+
+}
+
+
+
+/* 用这个属性选择器 能少些很多代码 …^=表示以xxxx开头*/
+.local-nav li [class ^= "local-nav-icon"]{
+    width: 32px;
+    height: 32px;
+    /* background-color: pink; */
+    background-color: #ecfcf8;
+    background-image: url(../images/weekend.png);
+    background-size: 32px auto;
+    margin-top: 8px;
+}
+
+
+.local-nav li .local-nav-icon-icon2{
+    background-color: #fa6f53;
+    background-image: url(../images/hotel.png);
+}
+
+.local-nav li .local-nav-icon-icon3{
+    background-color: #4598fa;
+    background-image: url(../images/flight.png);
+}
+.local-nav li .local-nav-icon-icon4{
+    background-color: #608bff;
+    background-image: url(../images/train_ticket.png);
+}
+.local-nav li .local-nav-icon-icon5{
+    background-color: #44d0b4;
+    background-image: url(../images/vacation.png);
+}
+
+/* nav */
+
+nav {
+    /* 小圆角 */
+    overflow: hidden;
+    border-radius: 8px;
+    /* 上0  左右4  下3 */
+    margin: 0 4px 3px;
+    /* 高度可以不用给 让孩子自己撑开 */
+}
+
+
+.nav-common{
+    display: flex;
+    height: 88px;
+    /* 背景颜色渐变 */
+    background: -webkit-linear-gradient(left,#fa7352,#fb8550);
+}
+
+
+.nav-common:nth-child(2){
+    /* 背景颜色渐变 */
+    background: -webkit-linear-gradient(left,#659cff,#66a3ff);
+}
+
+.nav-common:nth-child(3){
+    /* 背景颜色渐变 */
+    background: -webkit-linear-gradient(left,#4fd7b3,#4dd6b3);
+}
+
+.nav-common:nth-child(2){
+    margin: 3px 0;
+}
+
+/*  已经有flex: 1;
+    还能写display: flex吗？---可以
+    既可以当儿子，又可以当爸爸    
+*/
+.nav-items{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+
+.nav-items a{
+    flex: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    /* 加上文字阴影 */
+    text-shadow: 1px 1px rgba(0,0,0,.2);
+}
+
+/* 给第一个孩子 海外酒店添加下边框 */
+.nav-items a:nth-child(1){
+    border-bottom: 1px solid #fff;
+}
+
+/* 第一行、第一列的a是不需要border的 */
+.nav-items:nth-child(1) a{
+    border: 0;
+    background-color: #4598fa;
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 65px auto;
+
+}
+
+/* 第二行、第一列的a是不需要border的 */
+.nav-common:nth-child(2) .nav-items:nth-child(1) a{
+    border: 0;
+    background-color: #4598fa;
+    background: url(../images/flight.png) no-repeat bottom center;
+    background-size: 65px auto;
+
+}
+
+/* 第三行、第一列的a是不需要border的 */
+.nav-common:nth-child(3) .nav-items:nth-child(1) a{
+    border: 0;
+    background-color: #4598fa;
+    background: url(../images/vacation.png) no-repeat bottom center;
+    background-size: 65px auto;
+
+}
+
+/* 使用属性选择器给div分割起来 这里要用border 
+不能用margin撑开。撑开后就看到背景色了。-n+2 就是前两个元素 */
+.nav-items:nth-child(-n+2){
+    border-right: 1px solid #fff;
+}
+
+/* 二级导航入口 */
+.subnav-entry {
+    display: flex;
+    border-radius: 8px;
+    background-color:#fff;
+    margin: 2px 2px;
+    /* 换行 */
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+
+.subnav-entry li {
+    /* 写%是相对于父级来说的 */
+    flex: 20%;
+}
+
+.subnav-entry a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* 给10个元素设置图片 */
+.subnav-entry li [class ^= "subnav-entry-icon-icon"]{
+    width: 28px;
+    height: 28px;
+    margin-top: 4px;
+    background-image: url(../images/hotel_inn.png);
+    background-size: 32px auto;
+}
+
+
+.subnav-entry li .subnav-entry-icon-icon2{
+    background-image: url(../images/flight_package.png);
+} 
+
+.subnav-entry li .subnav-entry-icon-icon3{
+    background-image: url(../images/bus_ticket.png);
+} 
+
+.subnav-entry li .subnav-entry-icon-icon4{
+    background-image: url(../images/ticket.png);
+} 
+.subnav-entry li .subnav-entry-icon-icon5{
+    background-image: url(../images/food.png);
+} 
+.subnav-entry li .subnav-entry-icon-icon6{
+    background-image: url(../images/hotel_sale.png);
+} 
+.subnav-entry li .subnav-entry-icon-icon7{
+    background-image: url(../images/airport_transfer.png);
+} 
+.subnav-entry li .subnav-entry-icon-icon8{
+    background-image: url(../images/car.png);
+} 
+.subnav-entry li .subnav-entry-icon-icon9{
+    background-image: url(../images/weekend.png);
+} 
+
+.subnav-entry li .subnav-entry-icon-icon10{
+    background-image: url(../images/shop.png);
+} 
+
+
+/* 销售模块 */
+
+.sales-box{
+    border-top: 1px solid #bbb;
+    background-color: #fff;
+    margin: 4px;
+}
+
+
+.sales-hd {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+
+.sales-hd h2 {
+    position: relative;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.sales-hd h2::after{
+    position: absolute;
+    top: 1px;
+    left: 20px;
+    content: "";
+    width: 73px;
+    height: 20px;
+    background: url(../images/sales.png) no-repeat;
+    background-size: 73px auto;
+}
+
+.more {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    /* 背景渐变色 */
+    background: -webkit-linear-gradient(left,#ff8c80,rgb(253, 179, 170));
+    font-size: 14px;
+    border-radius: 15px;
+    /* 上3  右20 下3  左10 */
+    padding: 3px 20px 3px  10px;
+
+    /* 设置文字颜色 */
+    color: #fff;
+
+    /* 设置轴距 */
+    z-index: 1;
+}
+
+/* more的小三角 */
+.more::after{
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 7px;
+    height: 7px;
+    /* 小三角 */
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    /* 小三角旋转 */
+    transform: rotate(45deg);
+}
+
+.row {
+    display: flex;
+}
+
+.row a {
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 给每一行的第一个a指定有边框 */
+.row a:nth-child(1) {
+    flex: 1;
+    border-right: 1px solid #ccc;
+}
+
+
+/* 设置每行的图片 */
+.row a img {
+    width: 100%;
+}
+
+
+/* 底部导航样式 */
+.bottom {
+    height: 50px;
+    border-color: white;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 8px 4px ;
+
+    display: flex;
+    /* 小圆角 */
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.bottom a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin-top: 8px;
+    font-size: 12px;
+
+
+}
+
+
+.bottom a .icon-iphone {
+    width: 18px;
+    height: 18px;
+    background: url(../images/sprite.png) no-repeat -59px -153px;
+    /* background-color: pink; */
+    background-size: 104px auto;
+}
+
+.bottom a .icon-download {
+    width: 18px;
+    height: 18px;
+    background: url(../images/sprite.png) no-repeat -59px -174px;
+    background-size: 104px auto;
+  }
+
+  .bottom a .icon-me {
+    width: 18px;
+    height: 18px;
+    background: url(../images/sprite.png) no-repeat -60px -310px;
+    background-size: 104px auto;
+  }
+
