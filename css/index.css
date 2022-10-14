@@ -37,7 +37,7 @@ li {
     /* 固定定位和父级没有关系，是以屏幕视口为准的 */
     position: fixed;
     top: 0;
-    /*  */
+    /* 固定定位居中 */
     left: 50%;
     /* 为了兼容老版本的谷歌浏览器 */
     -webkit-transform: translateX(-50%);
@@ -447,13 +447,30 @@ nav {
     border-color: white;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    margin: 8px 4px ;
 
     display: flex;
     /* 小圆角 */
     overflow: hidden;
-    border-radius: 8px;
+
     background-color: #fff;
+
+    /* 固定在底部 */
+    position: fixed;
+    bottom: 0;
+    /* 固定定位居中 */
+    left: 50%;
+    /* 为了兼容老版本的谷歌浏览器 */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    /* margin-left: -xxx 不行，因为宽度不确定，只能进行计算。
+    同时，因为是是固定定位，无法使用margin 0 auto */
+    /* 固定的盒子必须要有宽度*/
+    width: 100%;
+    /* 再次重写下视口 防止覆盖 */
+    min-width: 320px;
+    max-width: 540px;
+    /* 设置z-index:9999 保持搜索框置顶 */
+    /* z-index: 9999; */
 }
 
 .bottom a {
@@ -490,3 +507,33 @@ nav {
     background-size: 104px auto;
   }
 
+/* 版权信息底部 */
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+
+    padding-top: 20px;
+    padding-bottom: 60px;
+/* flex-wrap: wrap; */
+}
+footer p .iconfont {
+font-size: 12px;
+color: rgb(83, 83, 83);
+}
+footer p {
+margin: 0;
+padding: 0;
+}
+footer .p1 {
+color: rgb(83, 83, 83);
+}
+footer .p2,
+.icon-banquan-copy {
+color: #bbb;
+/* vertical-align:text-bottom; */
+}
